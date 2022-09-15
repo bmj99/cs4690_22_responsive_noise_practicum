@@ -9,14 +9,14 @@
       href="https://raw.githubusercontent.com/bmj99/uvu_darklight_theme/main/public/img/uvu_mono_green.png"
     />
   </head>
-  <body
+  <!-- <body
     onload="setup()"
     class="font-sans bg-uvu-light dark:bg-uvu-dark bg-cover bg-center bg-fixed"
-  >
-    <!-- <body
+  > -->
+    <body
     onload="testMe()"
     class="font-sans bg-uvu-light dark:bg-uvu-dark bg-cover bg-center bg-fixed"
-  > -->
+  >
     <form
       class="
         p-5
@@ -143,27 +143,49 @@
             "
           ></textarea>
           <br />
-
+          <div class="sm:flex">
+          
           <!-- Add Log Button -->
+          <div>
           <button
-            type="button"
-            id="addLogBtn"
-            data-cy="add_log_btn"
-            class="
-              rounded
-              bg-uvu-green-l2
-              text-uvu-grey
-              font-rajdhani
-              pl-5
-              pr-5
-              p-2
-              hover:bg-uvu-green-d2
-            "
-            disabled
+          type="button"
+          id="addLogBtn"
+          data-cy="add_log_btn"
+          class="
+          rounded
+          bg-uvu-green-l2
+          text-uvu-grey
+          font-rajdhani
+          pl-5
+          pr-5
+          p-2
+          hover:bg-uvu-green-d2
+          mr-3
+          "
+          disabled
           >
             Add Log
           </button>
         </div>
+        
+        <!-- Speech to Text Button -->
+        <div>
+        <button
+        type="button"
+        id="speechToTextBtn"
+        class="
+        rounded
+        bg-uvu-green-l2
+        text-uvu-grey
+        font-rajdhani
+        hover:bg-uvu-green-d2
+        "
+        >
+        <img id="mic_icon" src="mic.svg" alt="microphone icon speech to text" class="w-10 h-10"></img>
+      </button>
+    </div>
+  </div>
+  </div>
       </div>
     </form>
 

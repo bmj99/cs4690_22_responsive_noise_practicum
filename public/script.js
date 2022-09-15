@@ -157,10 +157,46 @@ async function displayLogs(course, uvuId) {
         `Retrieved Logs\nLog Number: ${log}\nLog Date: ${logs[log].date}\nLog Text: ${logs[log].text}\n`
       );
 
-      let newLogHtml = `<li id="logId${log}" class="logEntry cursor-pointer border-l-4 border-uvu-green pl-2 pb-2 m-1 bg-uvu-grey hover:bg-uvu-green-l1 hover:border-uvu-green-d2 hover:text-uvu-grey text-uvu-grey-d2 dark:bg-uvu-green-l2 rounded">
-      <div><small>${logs[log].date}</small></div>
-      <pre class="whitespace-pre-wrap"><p>${logs[log].text}</p></pre>
-      </li>`;
+      let newLogHtml = `
+      <div class="md:flex md:justify-between">
+        <li 
+        id="logId${log}" 
+        class="
+        logEntry 
+        cursor-pointer 
+        border-l-4 
+        border-uvu-green 
+        p-2
+        m-1 
+        mr-3
+        bg-uvu-grey 
+        hover:bg-uvu-green-l1 
+        hover:border-uvu-green-d2 
+        hover:text-uvu-grey 
+        text-uvu-grey-d2 
+        dark:bg-uvu-green-l2 
+        rounded
+        flex-grow">
+          <div><small>${logs[log].date}</small></div>
+          <pre class="whitespace-pre-wrap"><p>${logs[log].text}</p></pre>
+        </li>
+        
+      <button 
+        type="button" 
+        id="playLogId${log}btn"
+        class="
+        rounded-full
+        bg-uvu-green-l2
+        text-uvu-grey
+        font-rajdhani
+        hover:bg-uvu-green-d2 
+        m-1
+        mt-4
+        w-10
+        h-10">
+      <img id="play_icon" src="play.svg" alt="play icon text to speech" class="w-10 h-10"></img>
+      </button>
+      </div>`;
 
       let text = $('#logsDisplay').inHtml();
       text += newLogHtml;
