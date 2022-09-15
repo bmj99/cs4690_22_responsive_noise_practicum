@@ -102,6 +102,10 @@ $('#addLogBtn').on('click', function () {
 
     // Set the New Log textbox to empty
     $('#newLogText').val('');
+
+    // Play a sound on successful submission
+    var snd = new Audio('rain_drop.mp3');
+    snd.play();
   } else {
     console.log('Log text is empty, submission was unsuccessful.');
   }
