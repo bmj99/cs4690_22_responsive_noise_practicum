@@ -56,6 +56,7 @@
           value=""
           data-cy="uvuId_input"
           placeholder="UVU ID . . ."
+          size="8"
           class="
             p-3
             pl-5
@@ -68,6 +69,7 @@
             mr-5
             hover:bg-uvu-grey
             dark:bg-uvu-green-l1 dark:text-uvu-grey
+            width-48
           "
         />
 
@@ -161,6 +163,16 @@
           >
             Add Log
           </button>
+
+          <div id="audioPlay">
+            <audio controls>
+              <source
+                src="https://www.zedge.net/ringtone/e16454c1-e5ac-4e99-a3e8-77a84e4a65e1"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
         </div>
       </div>
     </form>
@@ -207,16 +219,10 @@
 </html>
 
 <!-- ------------------------------------------------------------------------------ -->
-<!-- UVU Brand Dark/Like Practicum Requirements -->
+<!-- Responsive Noise Practicum Requirements -->
 <!-- ------------------------------------------------------------------------------ -->
 
-<!-- DONE: Make it look like it belongs to the University -->
-<!-- DONE: Use only UVU official color pallet -->
-<!-- DONE: Use only UVU official fonts -->
-<!-- DONE: Use UVU suggested design guidelines -->
-<!-- DONE: Use UVU favicon -->
-<!-- DONE: Put at least one UVU graphic on the page -->
-<!-- DONE: Design how the user will pick light or dark mode in the gui -->
-<!-- DONE: Change the display when the user changes mode -->
-<!-- DONE: Store the users mode pref in cookie or local storage -->
-<!-- DONE: Print to the console the User, browser, and OS preferences -->
+<!-- DONE: Responsive - It should look good on an ultra wide monitor or a small phone -->
+<!-- TODO: Sound - The GUI must play at least one meaningful pre-recorded sound. Maybe you play a short error sound for trying to press a disabled button. Maybe you play a success sound for entering a new log. -->
+<!-- TODO: Text to Speech - The user must have a way to get logs read out loud -->
+<!-- TODO: Speech to Text - The user must have a way to dictate a log -->
