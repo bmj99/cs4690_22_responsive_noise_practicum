@@ -1,4 +1,5 @@
 let statusCode = 0;
+let speech = new SpeechSynthesisUtterance();
 
 // Toggle the theme colors
 $('#theme-toggle').on('click', function () {
@@ -203,8 +204,8 @@ async function displayLogs(course, uvuId) {
       $('#logsDisplay').inHtml(text);
     }
 
-    // Add event listener for each log
     for (let log in logs) {
+      // Add event listener for each log to hide/show on click
       $(`#logId${log}`).on('click', function () {
         if ($(`#logId${log} > pre`).hasClass('hidden')) {
           console.debug(`Log ${log} was hidden, now is displayed`);
@@ -213,6 +214,14 @@ async function displayLogs(course, uvuId) {
           console.debug(`Log ${log} was displayed, now is hidden`);
           $(`#logId${log} > pre`).addClass('hidden');
         }
+      });
+
+      // Add event listener for each log to play log audio on click
+      $(`#playLogId${log}btn`).on('click', function () {
+        console.debug(`Play Log ${log} button was pushed!`);
+        console.debug(logs[log].text);
+        speech.text = logs[log].text;
+        window.speechSynthesis.speak(speech);
       });
     }
   } else {
