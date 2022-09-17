@@ -1,5 +1,32 @@
 let statusCode = 0;
-let speech = new SpeechSynthesisUtterance();
+let speechToText = new SpeechSynthesisUtterance();
+let SpeechRecognition = webkitSpeechRecognition;
+let recognition = new SpeechRecognition();
+
+recognition.onstart = function () {
+  console.log('Speak into your mic to dictate a new log!');
+};
+
+recognition.onspeechend = function () {
+  console.debug('Ended dictation.');
+  recognition.stop();
+};
+
+recognition.onresult = function (event) {
+  var transcript = event.results[0][0].transcript;
+  // var confidence = event.results[0][0].confidence;
+  console.debug(transcript);
+  // console.debug(confidence);
+  let curTextLog = $('#newLogText').val();
+  curTextLog += transcript;
+  $('#newLogText').val(curTextLog);
+};
+
+// Speech to Text Button
+$('#speechToTextBtn').on('click', function () {
+  console.debug('Speech to Text button was pressed! Starting recognition...');
+  recognition.start();
+});
 
 // Toggle the theme colors
 $('#theme-toggle').on('click', function () {
@@ -120,6 +147,7 @@ async function postLog(url = '', logInfo = {}) {
     data: logInfo,
   })
     .then((res) => {
+      console.debug('Response from POST log request:');
       console.debug(res);
     })
     .catch(function (error) {
@@ -195,7 +223,7 @@ async function displayLogs(course, uvuId) {
         mt-4
         w-10
         h-10">
-      <img id="play_icon" src="play.svg" alt="play icon text to speech" class="w-10 h-10"></img>
+      <img id="play_icon" src="play.svg" alt="play icon text to speechToText" class="w-10 h-10"></img>
       </button>
       </div>`;
 
@@ -220,8 +248,8 @@ async function displayLogs(course, uvuId) {
       $(`#playLogId${log}btn`).on('click', function () {
         console.debug(`Play Log ${log} button was pushed!`);
         console.debug(logs[log].text);
-        speech.text = logs[log].text;
-        window.speechSynthesis.speak(speech);
+        speechToText.text = logs[log].text;
+        window.speechSynthesis.speak(speechToText);
       });
     }
   } else {
